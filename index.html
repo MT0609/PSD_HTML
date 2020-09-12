@@ -15,33 +15,39 @@
             <div class="menu__logo">
                 <a href="index.html"><img src="assets/image/logo.png" alt="GONEX"></a>
             </div>
-            <nav>
-                <ul class="menu__list">
-                    <li>
-                        <a href="index.html" class="menu__link">HOME</a>
-                    </li>
-                    <li>
-                        <a href="#" class="menu__link">SERVICES</a>
-                    </li>
-                    <li>
-                        <a href="#" class="menu__link">WORK</a>
-                    </li>
-                    <li>
-                        <a href="#" class="menu__link">ABOUT US</a>
-                    </li>
-                    <li>
-                        <a href="#" class="menu__link">SKILL</a>
-                    </li>
-                    <li>
-                        <a href="#" class="menu__link">CONTACT</a>
-                    </li>
-                    <li>
-                        <button class="menu__search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox" class="menu__controller menu__controller--open">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul class="menu__list">
+                <li  class="menu__link">
+                    <a href="index.html">HOME</a>
+                </li>
+                <li class="menu__link">
+                    <a href="#">SERVICES</a>
+                </li>
+                <li class="menu__link">
+                    <a href="#">WORK</a>
+                </li>
+                <li class="menu__link">
+                    <a href="#" >ABOUT US</a>
+                </li>
+                <li class="menu__link">
+                    <a href="#">SKILL</a>
+                </li>
+                <li class="menu__link">
+                    <a href="#">CONTACT</a>
+                </li>
+                <li>
+                    <button class="menu__search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </li>
+                <label for="checkbox" class="menu__controller menu__controller--close">
+                    <i class="fas fa-times"></i>
+                </label>
+            </ul>
         </section>
 
         <section class="search-screen">
@@ -122,16 +128,14 @@
             <p class="work__subtitle">Lorem ipsum dolor sit. Eum quos deserunt molestias inventore, 
                 dignissimos doloremque repudiandae vel.
             </p>
-            <nav>
-                <ul class="work__menu">
-                    <li class="work__menu__link">ALL</li>
-                    <li class="work__menu__link">PHOTOGRAPHY</li>
-                    <li class="work__menu__link">GRAPHIC DESIGN</li>
-                    <li class="work__menu__link">APP</li>
-                    <li class="work__menu__link">PROGRAMMING</li>
-                    <li class="work__menu__link">WEB</li>
-                </ul>
-            </nav>
+            <ul class="work__menu">
+                <li class="work__menu__link">ALL</li>
+                <li class="work__menu__link">PHOTOGRAPHY</li>
+                <li class="work__menu__link">GRAPHIC DESIGN</li>
+                <li class="work__menu__link">APP</li>
+                <li class="work__menu__link">PROGRAMMING</li>
+                <li class="work__menu__link">WEB</li>
+            </ul>
         </section>
 
         <section class="about">

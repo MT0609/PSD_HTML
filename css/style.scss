@@ -4,7 +4,7 @@ $primary-color: #ffffff;
 $secondary-color: #55565b;
 $third-color: #f95353;
 
-* {
+*, *::before, *::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,31 +34,48 @@ body{
 }
 
 .wrapper {
-    max-width: 192rem;
+    max-width: 1920px;
     min-height: 100vh;
     margin: 0 auto;
 }
 
 .menu{
+    position: fixed;
+    z-index: 10;
     width: 100%;
     background-color: #161718;
     padding: 2.4rem;
     @include flex(space-evenly);
     &__list{
         @include flex(flex-start);
+        list-style-type: none;
         font-weight: 600;
+        transition: 1s;
     }
     &__link{
         margin-right: 5.2rem;
-        text-decoration: none;
+        a {
+            text-decoration: none;
+            color: $primary-color;
+            font-size: 1rem;
+        }
+        a:hover {
+            color: #4eaf4c; 
+        }
+        &:last-child {
+            margin-right: 5.6rem;
+        }
+    }
+    #checkbox {
+        display: none;
+    }
+    &__controller{
+        position: absolute;
+        right: 10rem;
+        background-color: transparent;
         color: $primary-color;
-        font-size: 1rem;
-    }
-    &__link:hover{
-        color: #4eaf4c;
-    }
-    &__link:last-child{
-        margin-right: 5.6rem;
+        cursor: pointer;
+        display: none;
     }
     button {
         @include button();
@@ -68,7 +85,6 @@ body{
 
 .search-screen{
     position: fixed;
-    // background-color: rgba(0, 0, 0, 0.5);
     background-color: $secondary-color;
     opacity: 0.9;
     top: 0;
@@ -118,7 +134,7 @@ body{
 .slider{
     position: relative;
     text-align: center;
-    height: 71.5rem;
+    height: 76.5rem;
     &__container{
         height: 100%;
         padding-top: 24rem;
@@ -219,13 +235,11 @@ body{
         color: $third-color;
         font-size: 2rem;
     }
-    nav {
-        margin-top: 5.6rem;
-        margin-bottom: 5.6rem;
-    }
     &__menu{
         @include flex;
-        height: 3.6rem;
+        min-height: 3.6rem;
+        margin-top: 5.6rem;
+        margin-bottom: 5.6rem;
         &__link{
             position: relative;
             margin-right: 4.5rem;
@@ -260,18 +274,21 @@ body{
     min-height: 95.3rem;
     background-color: #324651;
     text-align: center;
-    padding: 11.5rem 51.8rem;
+    padding: 11.5rem;
     &__title{
         font-size: 2rem;
         color: $third-color;
     }
     &__subtitle {
         margin: 5rem auto 5.5rem;
+        max-width: 48.4rem;
         font-size: 1.3rem;
         color: $primary-color;
     }
     &__caption {
         max-width: 91rem;
+        margin-right: auto;
+        margin-left: auto;
         font-family: "lora";
         color: $primary-color;
         font-size: 1.5rem;
@@ -430,4 +447,158 @@ footer {
     text-align: center;
     color: #57c654;
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        @include flex(space-between);
+        z-index: 2;
+        &__controller {
+            display: block;
+            &--open {
+                right: 3rem;
+            }
+            &--close {
+                top: 3rem;
+                right: 4rem;
+                font-size: 2rem;
+                color: $primary-color;
+            }
+        }
+        &__list {
+            position: fixed;
+            top: 0;
+            right: -50%;
+            padding: 5rem;
+            height: 100vh;
+            z-index: 100;
+            @include flex;
+            flex-direction: column;
+            background-color: $secondary-color;    
+        }
+        &__link{
+            margin-right: 0;
+            margin-bottom: 3rem;
+        }
+    }   
+    #checkbox:checked ~ .menu__list{
+        right: 0;
+    }
+
+    .slider {
+        &__arrow {
+            &--left {
+                left: 2rem;
+            }
+            &--right {
+                right: 2rem;
+            }
+        }
+        &__subtitle {
+            max-width: 50%;
+        }
+    }
+
+    .search-screen {
+        form {
+            input[type="text"] {
+                padding: 1rem 7rem 1rem 1rem;
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    .category {
+        padding: 2rem;
+        &__item {
+            width: 100%;
+        }
+    }
+
+    .work {
+        &__menu{
+            @include flex;
+            flex-direction: column;
+            &__link {
+                margin-right: 0;
+                &::after{
+                    top: 1.6rem;
+                }
+            }
+        }
+    }
+
+    .statistic {
+        &__bars {
+            width: 100%;
+        }
+        &__progressbar {
+            width: 90%;
+            &__outer {
+                width: 100%;
+            }
+        }
+    }
+
+    .footer {
+        padding-right: .2rem;
+        padding-left: .2rem;
+        &__form {
+            padding: 0;
+            form {
+                @include flex;
+                flex-direction: column;
+            }
+            form input[type="email"] {
+                margin-bottom: 1rem;
+                margin-right: 0;
+                padding-right: 20rem;
+            }
+        }
+        &__contact {
+            @include flex;
+            flex-direction: column;
+            width: 100%;
+            &-item {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .category {
+        padding: 2rem;
+        &__item {
+            width: 100%;
+        }
+    }
+    .footer {
+        padding-right: .2rem;
+        padding-left: .2rem;
+        &__form {
+            padding: 0;
+            form {
+                @include flex;
+                flex-direction: column;
+            }
+            form input[type="email"] {
+                padding-right: 4rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .footer {
+        &__social {
+            img {
+                margin-right: 3.3rem;
+            }
+        }
+    }
 }
